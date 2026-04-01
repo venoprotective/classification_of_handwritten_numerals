@@ -70,10 +70,10 @@ def train(model, X_train, y_train, X_valid, y_valid, num_epochs, learning_rate=0
 
         # можно сказать, что модель вероятно склонна 
         # к переобучению т.к. valid acc < train acc при росте количества эпох (25+)        
-        # print(f'Эпоха: {e+1:03d} / {num_epochs:03d}'
-        #       f'Train MSE: {train_mse:.2f} '
-        #       f'Train Acc: {train_acc:.2f} '
-        #       f'Valid Acc: {valid_acc:.2f} ')
+        print(f'Эпоха: {e+1:03d} / {num_epochs:03d}'
+              f'Train MSE: {train_mse:.2f} '
+              f'Train Acc: {train_acc:.2f} '
+              f'Valid Acc: {valid_acc:.2f} ')
         
     
     return epoch_loss, epoch_train_acc, epoch_valid_acc
