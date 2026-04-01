@@ -1,4 +1,5 @@
 import numpy as np
+from func_module import sigmoid, int_to_onehot
 
 class NeuralNetMLP:
     
@@ -11,32 +12,29 @@ class NeuralNetMLP:
         # hidden layer
         rng = np.random.RandomState(random_seed)
         
-        self.weight_h = rng.normal(loc=0.0, scale=0.1, size=(num_classes, num_hidden))
+        self.weight_h = rng.normal(loc=0.0, scale=0.1, size=(num_hidden, num_features))
         self.bias_h = np.zeros(num_hidden)
                     
         # out
         self.weight_out = rng.normal(loc=0.0, scale=0.1, size=(num_classes, num_hidden))
         self.bias_out = np.zeros(num_classes)
         
-        
-    def sigmoid(z):
-        return 1.0 / (1.0 + np.exp(-z))
 
     def forward(self, x):
         # hidden layer
         
         z_h = np.dot(x, self.weight_h.T) + self.bias_h        
-        a_h = self.sigmoid(z_h)
+        a_h = sigmoid(z_h)
         
         # output layer
-        z_out = np.dot(a_h, self.weight_h.T) + self.bias_h
-        a_out = self.sigmoid(z_out)
+        z_out = np.dot(a_h, self.weight_out.T) + self.bias_out
+        a_out = sigmoid(z_out)
         
         return a_h, a_out
     
     def backward(self, x, a_h, a_out, y):
         
-        y_onehot = self.int_to_onehot(y, self.num_classes)
+        y_onehot = int_to_onehot(y, self.num_classes)
         
         # dOutWeights = dLoss/dOutAct * dOutAct/dOutNet * dOutNet/dOutWeight
         # where deltaOut = dLoss/dOutAct * dOutAct/dOutNet
