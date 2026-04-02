@@ -24,7 +24,7 @@ python plot.py
 
 Пример вывода в консоль:
 
-Эпоха: 001/050 Train MSE: 0.0892 Train Acc: 94.56% Valid Acc: 94.12%\n
+Эпоха: 001/050 Train MSE: 0.0892 Train Acc: 94.56% Valid Acc: 94.12%
 Эпоха: 002/050 Train MSE: 0.0751 Train Acc: 95.23% Valid Acc: 94.78%
 ...
 Accuracy in testing: 95.67%
